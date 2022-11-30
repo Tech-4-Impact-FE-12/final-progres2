@@ -21,16 +21,18 @@ const navigate = useNavigate()
     e.preventDefault()
     if (email && password) {
       try {
-        
+  
       const response = await axios.post("https://coba2-production.up.railway.app/signin", {email, password})
-      // localStorage.setItem('user', JSON.stringify(findUser))
+      
       Swal.fire({
         icon: 'success',
         title: 'Login Success',
         showConfirmButton: false,
         timer: 1500
       })
-      navigate('/about')
+      console.log(response.data.status);
+      sessionStorage.setItem("status", response.data.status)
+      navigate('/')
 
       } catch (error) {
         Swal.fire({
@@ -41,25 +43,6 @@ const navigate = useNavigate()
       }
     }
   }
-
-    // if(findUser) {
-    //   localStorage.setItem('user', JSON.stringify(findUser))
-    //   Swal.fire({
-    //     icon: 'success',
-    //     title: 'Login Success',
-    //     showConfirmButton: false,
-    //     timer: 1500
-    //   })
-    //   navigate('/about')
-    // } else {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: 'Oops...',
-    //     text: 'Email atau Password Salah!',
-    //   })
-    // }
-  
-
 
 
   return (

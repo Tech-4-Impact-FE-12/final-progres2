@@ -48,15 +48,15 @@ const SignUp = () => {
   return (
     <>
       <section className='section-container mb-5'>
-        <div className="container container-signup mt-2">
+        <div className="container container-signup mt-5">
           <div className="row border shadow">
             <div className="col-md-6 left">
-              <h2 className="text-center pw-semibold mt-2" style={{fontSize: "36px", color: "#fff"}}>Selamat Datang Di MyNature !</h2>
+              <h2 className="text-center pw-semibold mt-5" style={{fontSize: "36px", color: "#fff"}}>Selamat Datang Di MyNature !</h2>
               <p className="text-center pw-light" style={{fontSize: "16px", color: "#fff"}}>Ayo daftar dan bantu kami untuk masa depan dunia yang lebih baik !</p>
               <img src="https://res.cloudinary.com/dxi5woyp1/image/upload/v1669301664/MyNature/IllustForm_rwb3he.svg" alt="" className="img-fluid mx-auto d-block" width="440"/>
             </div>
             <div className="col-md-6 right mt-5">
-              <h2 className="text-center pw-semibold mt-5" style={{fontSize: "32px"}}>Sign Up</h2>
+              <h2 className="text-center pw-semibold mt-3" style={{fontSize: "32px"}}>Sign Up</h2>
               <form className="mx-3 needs-validation" onSubmit={handleSubmit}>
                 <InputText valueLabel="Fullname" valueFor="fullname" type="text" id="fullname" name="fullname" placeholder="Masukkan Nama Lengkap" value={fullName} onChange={(e) => setFullName(e.target.value)}/>
               

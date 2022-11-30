@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import About from '../../Pages/Aboutpage/About';
 import Kegiatan from '../../Pages/Activitypage/Kegiatan';
@@ -10,7 +10,15 @@ import SignUp from '../../Pages/SignUp/SignUp';
 import Dashboard from '../../Pages/Dashboard/Dashboard'
 import './Navbar.css'
 
+
 const Navbar = () => {
+    const [isAdmin, setIsAdmin] = useState(sessionStorage.getItem("status") || "user")
+    const {pathname} = useLocation()
+
+    useEffect(() => {
+        setIsAdmin(sessionStorage.getItem("status"))
+    }, [pathname])
+
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,17 +37,17 @@ const Navbar = () => {
                                 </li>
                             </LinkContainer>
                             <LinkContainer to="/kegiatan">
-                                <li className="nav-item">
+                                <li className={`nav-item ${isAdmin === "admin" && "d-none"}`}>
                                     <a className="nav-link active" aria-current="page" href="#">Activity</a>
                                 </li>
                             </LinkContainer>
                             <LinkContainer to="/about">
-                                <li className="nav-item">
+                                <li className={`nav-item ${isAdmin === "admin" && "d-none"}`}>
                                     <a className="nav-link active" aria-current="page" href="#">About</a>
                                 </li>
                             </LinkContainer>
                             <LinkContainer to="/dashboard">
-                                <li className="nav-item">
+                                <li className={`nav-item ${isAdmin !== "admin" && "d-none"}`}>
                                     <a className="nav-link active" aria-current="page" href="#">Dashboard</a>
                                 </li>
                             </LinkContainer>
@@ -58,7 +66,9 @@ const Navbar = () => {
                 <Route path="/login" element={<SignIn />} />
                 <Route path="/register" element={<SignUp />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                {/* <Route path="/admin" element={<Admin />} /> */}
             </Routes>
+
         </>
     )
 }
