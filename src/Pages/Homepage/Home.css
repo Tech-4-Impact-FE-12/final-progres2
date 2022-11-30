@@ -1,3 +1,8 @@
+  #myCarousel{
+    width: 40%;
+    height: 40%;
+  }
+  
   .carousel {
     margin-bottom: 4rem;
   }
@@ -82,6 +87,15 @@
     justify-content: space-evenly;
   }
 
+  /* LIST CLASS SECTION */
+.list-harapan-section{
+  height: 700px;
+  position: relative;
+}
+
+.list-harapan-text{
+  margin: 100px 0 50px;
+}
   
   /* End Harapan */
   
